@@ -14,14 +14,15 @@ const userSlice = createSlice({
     reducers: {
         setUserData(state: InitState, action: PayloadAction<InitState>)  {
             state.userData = action.payload.userData;
-            console.log("Payload",action.payload);
+            console.log("Payload",action.payload.userData);          
         },
         getUserData(state:InitState):InitState{
+            console.log("User data:",state.userData);
             return state;
         }
     },
 });
 
-export const { setUserData } = userSlice.actions;
+export const { setUserData , getUserData } = userSlice.actions;
 
 export default userSlice.reducer;

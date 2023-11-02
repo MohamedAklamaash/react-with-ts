@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { InitState } from "../redux-store/userSlice";
+import { useDispatch } from "react-redux";
+import {getUserData} from "../redux-store/userSlice"
 const QuizPage = () => {
+  const userDetails = useSelector((state: InitState) => state);
+  const dispatch = useDispatch();
+  console.log(userDetails);
   const navigate = useNavigate();
   const [quizData, setQuizData] = useState<any[]>([]);
   let [quizAnswers, setQuizAnswers] = useState<string[]>([]);
@@ -10,8 +17,9 @@ const QuizPage = () => {
     const { data } = await axios.get(`https://the-trivia-api.com/v2/questions`);
     setQuizData(data);
   };
-
+  
   useEffect(() => {
+    dispatch(getUserData());
     getQuizData();
   }, []);
 
