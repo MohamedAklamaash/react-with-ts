@@ -16,7 +16,6 @@ const LoginPage = () => {
         const token = credentials?.accessToken;
         const user = res.user;
         dispath(setUserData({userData:user}));
-        console.log(user);
     }).catch((error)=>{
         console.log(error);
     })

@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux/es/hooks/useSelector";
-import { InitState } from "../redux-store/userSlice";
+
 import { useDispatch } from "react-redux";
 import {getUserData} from "../redux-store/userSlice"
 const QuizPage = () => {
-  const userDetails = useSelector((state: InitState) => state);
   const dispatch = useDispatch();
-  console.log(userDetails);
   const navigate = useNavigate();
   const [quizData, setQuizData] = useState<any[]>([]);
   let [quizAnswers, setQuizAnswers] = useState<string[]>([]);
@@ -31,8 +28,6 @@ const QuizPage = () => {
     return array;
   };
 
-  console.log(quizData);
-  console.log("Answer Count:", ansCount);
 
   return (
     <div className="p-4">
@@ -41,17 +36,17 @@ const QuizPage = () => {
         quizAnswers.push(d.correctAnswer, ...d.incorrectAnswers);
         quizAnswers = shuffleArr(quizAnswers);
         return (
-          <div className="p-2">
+          <div className="p-2" key={index}>
             <h1 className="font-mono">
               Category : {String(d.category).toLocaleUpperCase()}
             </h1>
             <h1 className="text-center">
               Question {index + 1} : {d.question.text}
             </h1>
-            <main>
+            <main key={index}>
               {quizAnswers.map((ans, ansIndex) => {
                 return (
-                  <div className="flex items-center space-x-3 flex-wrap">
+                  <div className="flex items-center space-x-3 flex-wrap" key={ansIndex}>
                     <input
                       type="radio"
                       name={`question${index}`}

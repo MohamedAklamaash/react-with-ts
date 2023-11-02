@@ -8,7 +8,6 @@ const auth = getAuth(app);
 const Home = () => {
   const navigate = useNavigate();
   const userDetails = useSelector((state: InitState) => state);
-  console.log(userDetails.user.userData.displayName);
   const dispath = useDispatch();
   const [user, setuser] = useState<React.SetStateAction<object>>({});
   useEffect(() => {
