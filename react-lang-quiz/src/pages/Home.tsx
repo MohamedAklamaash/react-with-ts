@@ -25,15 +25,17 @@ const Home = () => {
   return (
     <div>
       <main>
-        <div>
-          <h1>Welcome {user.displayName}</h1>
+        <div className="flex  items-center justify-evenly">
+          <h1 className="text-4xl mt-10 flex items-center justify-center ">
+            Welcome {"  "} <p className=" ml-3 text-red-500 ">{user.displayName}</p>
+          </h1>
           <img
             src={user.photoURL}
             alt="ProfilePic"
             className="h-[100px] w-[100px] rounded-full"
           />
         </div>
-        <a href="/quiz">Click to navigate to Quiz Page</a>
+        <a href="/quiz" className="text-2xl h-[30vh] flex items-center justify-center  ">Click to navigate to Quiz Page</a>
       </main>
     </div>
   );

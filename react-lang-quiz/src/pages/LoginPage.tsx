@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { setUserData } from "../redux-store/userSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import googleSvg from "../assets/google.svg";
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
 const LoginPage = () => {
@@ -33,12 +34,14 @@ const LoginPage = () => {
   },[])
 
   return (
-    <div>
-        <button onClick={loginWithgoogle}>
-            Sign In with google
-        </button>
+    <div
+      className="flex min-h-screen items-start justify-center text-4xl text-violet-200 mt-[40vmin] space-x-2 cursor-pointer"
+      onClick={loginWithgoogle}
+    >
+      <button>Sign In with Google</button>
+      <img src={googleSvg} alt="logo" />
     </div>
-  )
+  );
 }
 
 export default LoginPage

@@ -11,19 +11,21 @@ const Navbar = () => {
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAWA_RcSUZr0_eyeuG-R-tdDLTF-bH-hfrjGR8OaA&s"
             alt="logo"
-            className="h-[60px]"
+            className="h-[60px] cursor-pointer  "
             onClick={() => {
               navigate("/");
             }}
           />
-          <h1 className="font-serif ">Quiz Time</h1>
+          <h1 className="font-serif cursor-pointer " onClick={()=>{
+            navigate("/quiz")
+          }}>Quiz Time</h1>
         </div>
         <div className="flex items-center justify-around space-x-10">
           <a href="/login" className="cursor-pointer">
             Login
           </a>
-          <a href="/signUp">
-            SignUp
+          <a href="/quiz">
+            Quiz Page
           </a>
         </div>
         <div>
