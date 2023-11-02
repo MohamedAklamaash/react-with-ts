@@ -21,13 +21,19 @@ const Home = () => {
       }
     });
   });
+
   return (
     <div>
       <main>
         <div>
-          <h1>Welcome {userDetails.user.userData.displayName}</h1>
-          <img src={userDetails.user.userData.photoURL} alt="ProfilePic" className="h-[100px] w-[100px] rounded-full"/>
+          <h1>Welcome {user.displayName}</h1>
+          <img
+            src={user.photoURL}
+            alt="ProfilePic"
+            className="h-[100px] w-[100px] rounded-full"
+          />
         </div>
+        <a href="/quiz">Click to navigate to Quiz Page</a>
       </main>
     </div>
   );

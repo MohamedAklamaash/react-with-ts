@@ -1,10 +1,13 @@
-import {GoogleAuthProvider, getAuth, signInWithPopup} from "firebase/auth";
+import {GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup} from "firebase/auth";
 import { app } from "../firebaseConfigs/firebase";
 import { useDispatch } from "react-redux";
 import { setUserData } from "../redux-store/userSlice";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
 const LoginPage = () => {
+  const navigate = useNavigate();
   const dispath = useDispatch();
   const loginWithgoogle = ()=>{
     signInWithPopup(auth,provider).then((res)=>{
@@ -17,6 +20,17 @@ const LoginPage = () => {
         console.log(error);
     })
   }
+
+  useEffect(()=>{
+    onAuthStateChanged(auth,(user)=>{
+      if(user){
+        navigate("/");
+      }
+      else{
+        navigate("/login")
+      }
+    })
+  },[])
 
   return (
     <div>

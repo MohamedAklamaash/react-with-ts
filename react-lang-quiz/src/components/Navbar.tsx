@@ -27,7 +27,7 @@ const Navbar = () => {
           </a>
         </div>
         <div>
-            <h2 onClick={()=>signOut(auth)}>
+            <h2 onClick={()=>signOut(auth)} className="cursor-pointer ">
                 LogOut
             </h2>
         </div>
