@@ -8,7 +8,7 @@ const auth = getAuth(app);
 const Home = () => {
   const navigate = useNavigate();
   const userDetails = useSelector((state: InitState) => state);
-  console.log(userDetails.user.userData);
+  console.log(userDetails.user.userData.displayName);
   const dispath = useDispatch();
   const [user, setuser] = useState<React.SetStateAction<object>>({});
   useEffect(() => {
@@ -16,13 +16,21 @@ const Home = () => {
       if (user) {
         setuser(user);
         dispath(setUserData({ userData: user }));
-        console.log(user);
       } else {
         navigate("/login");
       }
     });
   });
-  return <div>Home</div>;
+  return (
+    <div>
+      <main>
+        <div>
+          <h1>Welcome {userDetails.user.userData.displayName}</h1>
+          <img src={userDetails.user.userData.photoURL} alt="ProfilePic" className="h-[100px] w-[100px] rounded-full"/>
+        </div>
+      </main>
+    </div>
+  );
 };
 
 export default Home;
