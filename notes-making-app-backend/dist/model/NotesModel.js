@@ -12,8 +12,8 @@ const NotesModal = new mongoose_1.default.Schema({
         required: true
     },
     notesArr: {
-        type: (Array),
-        default: []
+        type: [String],
+        default: [],
     },
     userPass: {
         type: String,

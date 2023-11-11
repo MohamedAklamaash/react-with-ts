@@ -7,8 +7,8 @@ const NotesModal = new mongoose.Schema({
         required:true
     },
     notesArr:{
-        type:Array<string>,
-        default:[]
+        type:[String],
+        default:[],
     },
     userPass:{
         type:String,
