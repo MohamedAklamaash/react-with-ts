@@ -1,6 +1,6 @@
-import express from "express";
+import express, { Router } from "express";
 import {addNotes, createNewNote, deleteEntireNotes, getAllNotes, removeNotes, updateNotes} from "../controllers/NotesController";
-const router = express.Router();
+const router:Router = express.Router();
 
 router.route("/newUser").post(createNewNote);
 router.route("/deleteEntireNotes/:id").delete(deleteEntireNotes);
